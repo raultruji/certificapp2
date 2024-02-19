@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.raultruji.certificapp2.domain.models.Medico;
 
-public interface MedicoRepository extends JpaRepository<Medico, Long>{
+public interface IMedicoRepository extends JpaRepository<Medico, Long>{
 
 	//Set bc there is no repes
 	//Optional<Medico> findById(Long id);

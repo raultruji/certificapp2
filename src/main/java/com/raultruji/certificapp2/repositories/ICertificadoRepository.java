@@ -9,7 +9,7 @@ import com.raultruji.certificapp2.domain.models.Cliente;
 import com.raultruji.certificapp2.domain.models.Medico;
 import com.raultruji.certificapp2.domain.models.User;
 
-public interface CertificadoRepository extends JpaRepository<Certificado, Long>{
+public interface ICertificadoRepository extends JpaRepository<Certificado, Long>{
 	
 	List<Certificado> findByIdCertificado(Long id);
 	List<Certificado> findByUsuario(User usuario);

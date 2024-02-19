@@ -46,7 +46,7 @@ public class User extends PersonaBase implements Serializable, UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	@Column(name = "id_usuario", nullable = false)
-	private long idUsuario;
+	private long id;
 	@NotBlank(message = "User Name is mandatory")
 	@Column(name = "usuario", nullable = false)
 	private String usuario;

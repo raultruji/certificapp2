@@ -42,6 +42,7 @@ public class JwtService {
 
 	private Key getKey() {
 		byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
+		//hmacShaKeyFor crea nueva instancia de nuestra secret key
 		return Keys.hmacShaKeyFor(keyBytes);
 	}
 

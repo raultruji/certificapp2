@@ -8,7 +8,7 @@ import com.raultruji.certificapp2.domain.models.Cliente;
 import com.raultruji.certificapp2.domain.models.Identificacion;
 import com.raultruji.certificapp2.domain.models.User;
 
-public interface ClienteRepository extends JpaRepository<Cliente, Long>{
+public interface IClienteRepository extends JpaRepository<Cliente, Long>{
 
 	Cliente getClienteByIdCliente(Long idCliente);
 	/**

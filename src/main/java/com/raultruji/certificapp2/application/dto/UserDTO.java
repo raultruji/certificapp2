@@ -15,8 +15,17 @@ public class UserDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private Long idUsuario;
-	private String usuario;
+	//private Long id;
+	private String usuario;	
 	private String password;
-	private Permiso permiso;
+	private final Permiso permiso = Permiso.USER;
+   
+	//form PersonaBase
+	private String nombre;
+	private String apellido1;
+	private String apellido2;
+
+	
+
+	
 }

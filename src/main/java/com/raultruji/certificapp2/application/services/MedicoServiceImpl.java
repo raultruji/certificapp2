@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 import com.raultruji.certificapp2.application.dto.MedicoDTO;
 import com.raultruji.certificapp2.application.mapper.MedicoMapper;
 import com.raultruji.certificapp2.domain.models.Medico;
-import com.raultruji.certificapp2.repositories.MedicoRepository;
+import com.raultruji.certificapp2.repositories.IMedicoRepository;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 
 @Service
-public class MedicoService {
+public class MedicoServiceImpl implements IMedicoService{
 
-	MedicoRepository repository;
+	IMedicoRepository repository;
 	Validator validator;
 	
 	@Autowired
-	public MedicoService(MedicoRepository repository) {
+	public MedicoServiceImpl(IMedicoRepository repository) {
 		this.repository = repository;
 	}
 	
