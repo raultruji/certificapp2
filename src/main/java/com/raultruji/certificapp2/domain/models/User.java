@@ -105,7 +105,9 @@ public class User extends PersonaBase implements Serializable, UserDetails{
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
+
+
 
 }

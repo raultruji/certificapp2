@@ -3,6 +3,7 @@ package com.raultruji.certificapp2.infrastructure.rest.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.raultruji.certificapp2.application.dto.UserDTO;
 import com.raultruji.certificapp2.application.services.IUserService;
+import com.raultruji.certificapp2.repositories.IUserRepository;
 
 @Controller
 @RequestMapping("/certificapp/register")
 public class RegisterController {
 	@Autowired
 	private IUserService userService;
+	private IUserRepository userRepo;
+	private PasswordEncoder encoder;
 	
 	@GetMapping
 	public String getRegisterPage(Model model) {

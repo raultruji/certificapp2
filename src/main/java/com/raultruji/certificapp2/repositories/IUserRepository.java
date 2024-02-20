@@ -11,10 +11,10 @@ import com.raultruji.certificapp2.domain.models.User;
 public interface IUserRepository extends JpaRepository<User, Long>{
 
 	List<User> findAll();
-	Optional<User> findUserById(Long idUsuario);	
+	Optional<User> findById(Long idUsuario);	
 	
 	//query method para buscar por user name (ususario)
-	Optional<User> findUserByUsuario(String usuario);
+	Optional<User> findByUsuario(String usuario);
 
 	
 }
