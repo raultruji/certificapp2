@@ -142,11 +142,12 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return  new BCryptPasswordEncoder();
     }
+	/*
 	@Bean
 	public UserDetailsService userDetailService(IUserRepository userRepository) {
 		return username -> userRepository.findByUsuario(username)
 				.orElseThrow(()-> new UsernameNotFoundException("Usuario "+username+" not found"));
 	}
-	
+	*/
 }
 	

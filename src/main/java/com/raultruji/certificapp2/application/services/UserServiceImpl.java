@@ -43,14 +43,14 @@ public class UserServiceImpl implements IUserService{
 	}
 	
 	public Optional<UserDTO> getUserById(Long id) {	
-		Optional<User> optional = userRepo.findUserById(id);		
+		Optional<User> optional = userRepo.findById(id);		
 		return Optional.ofNullable(optional.map(userMapper::userToUserDTO).orElse(null));
 
 	}
 	@Override
 	public  Optional<UserDTO>  getUserByUsuario(String nombre) {
 		UserDTO aux = new UserDTO();
-		Optional<User> opt = userRepo.findUserByUsuario(nombre);
+		Optional<User> opt = userRepo.findByUsuario(nombre);
 		return Optional.of(opt.map(userMapper::userToUserDTO).orElse(aux));
 	}
 	

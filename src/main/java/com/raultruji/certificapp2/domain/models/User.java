@@ -28,6 +28,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.java.Log;
 
@@ -39,12 +40,13 @@ import lombok.extern.java.Log;
 @Builder
 @Log
 @EqualsAndHashCode(callSuper=false)
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
+@RequiredArgsConstructor
 public class User extends PersonaBase implements Serializable, UserDetails{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	@GeneratedValue(strategy = GenerationType.AUTO)	
 	@Column(name = "id_usuario", nullable = false)
 	private long id;
 	@NotBlank(message = "User Name is mandatory")

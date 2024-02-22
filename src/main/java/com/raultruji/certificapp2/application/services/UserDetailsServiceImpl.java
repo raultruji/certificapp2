@@ -19,8 +19,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	private IUserRepository userRepository;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Optional<User> user = userRepository.findUserByUsuario((username));
-		
+		Optional<User> user = userRepository.findByUsuario((username));		
 		return user.map(UserDetailModel::new).orElseThrow(() -> new UsernameNotFoundException("Usuario invalido"));
 	}
 
