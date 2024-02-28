@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("\"/certificapp/index\"")
 @RequiredArgsConstructor
 public class IndexController {
 
@@ -25,7 +25,7 @@ public class IndexController {
 	private SessionRegistry sessionRegistry;
 	
 	
-	@GetMapping("certificapp/index")
+	@GetMapping
 	public String getIndexPage() {
 		return "index";
 	}

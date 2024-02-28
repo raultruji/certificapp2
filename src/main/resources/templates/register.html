@@ -11,36 +11,42 @@
 	<div class="container">
 		<img src="user.png" class="avatar" alt="avatar">
 		<h1>REGISTER</h1>
-  
+
 		<form action="#" th:action="@{/certificapp/register}" th:object="${user}" method="post">
 			<div>
 				<label for="usuario">Nombre de usuario</label>
-				<input type="text" name ="usuario" id="usuario" th:field="*{usuario}" placeholder="Enter nombre de usuario">
+				<input type="text" name="usuario" id="usuario" th:field="*{usuario}"
+					placeholder="Enter nombre de usuario">
 				<p th:errors="*{usuario}" class="text-danger" th:if="${#fields.hasErrors('usuario')}">error</p>
 
 				<label for="nombre">Nombre</label>
-				<input type="text"  name ="nombre" id="nombre" th:field="*{nombre}" placeholder="Enter nombre">
+				<input type="text" name="nombre" id="nombre" th:field="*{nombre}" placeholder="Enter nombre">
 				<p th:errors="*{nombre}" class="text-danger" th:if="${#fields.hasErrors('nombre')}">error</p>
 
 				<label for="apellido1">Apellido 1</label>
-				<input type="text"  name ="apellido1" id="apellido1" th:field="*{apellido1}" placeholder="Enter apellido 1">
+				<input type="text" name="apellido1" id="apellido1" th:field="*{apellido1}"
+					placeholder="Enter apellido 1">
 				<p th:errors="*{apellido1}" class="text-danger" th:if="${#fields.hasErrors('apellido1')}">error</p>
 
 				<label for="apellido2">Apellido 2</label>
-				<input type="text"  name ="apellido2" id="apellido2" th:field="*{apellido2}" placeholder="Enter apellido 2">
+				<input type="text" name="apellido2" id="apellido2" th:field="*{apellido2}"
+					placeholder="Enter apellido 2">
 				<p th:errors="*{apellido2}" class="text-danger" th:if="${#fields.hasErrors('apellido2')}">error</p>
 
 				<label for="password">Password</label>
-				<input type="password"  name ="password" id="password" th:field="*{password}" placeholder="Enter Password">
-				<p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}">error</p>			    			
-				
+				<input type="password" name="password" id="password" th:field="*{password}"
+					placeholder="Enter Password">
+				<p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}">error</p>
+
 				<div th:if="${param.success}" th:text="${param.success}" class="message"></div>
 
-				<button type="submit">register</button>
-				<form action="/certificapp/login">
-					<input type="submit" value="Login" />
-				</form>
+				<button type="submit">Register</button>
+				<button type="button"><a th:href="@{/certificapp/login}">Login</button>
+				
 			</div>
+		</form>
+		<form action="#" th:action="@{/certificapp/login}" method="get">
+			<input type="submit" value="Login" />
 		</form>
 	</div>
 

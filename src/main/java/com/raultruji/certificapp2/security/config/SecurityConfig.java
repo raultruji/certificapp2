@@ -8,14 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import com.raultruji.certificapp2.repositories.IUserRepository;
 import com.raultruji.certificapp2.security.auth.CustomAuthenticationProvider;
 
 import lombok.RequiredArgsConstructor;
@@ -81,22 +78,24 @@ public class SecurityConfig {
 		return httpSecurity
 				.authorizeHttpRequests(auth -> {
 					//url permitidas
-					auth.requestMatchers("/certificapp/**").permitAll();
+					auth.requestMatchers(
+							"/certificapp/login","certificapp/register").permitAll();
 					//acceso  a users solo con rol ADMIN
-					auth.requestMatchers("/users/**")
+					auth.requestMatchers("/certificapp/users/**")
 					.hasRole("ADMIN");
 					//resto
 					auth.anyRequest().authenticated();
 					
 				})
 				.formLogin(fl -> {
-					//TODO problemas para utilizar custom login
 					fl.loginPage("/certificapp/login").permitAll();
 					//hidding spring security
 					//fl.loginProcessingUrl("/perform_login");
 					//para redirigir a una URL tras login/inicio session 
 					fl.successHandler(successHandler())
-						.permitAll();						
+						.permitAll();
+					fl.usernameParameter("usuario");
+					fl.defaultSuccessUrl("/certificapp/main_menu");
 				})			
 				// politica de creacion de session
 				//ALWAYS, IF_REQUIRED, NEVER, STATELESS:
@@ -122,26 +121,27 @@ public class SecurityConfig {
 				.authenticationProvider(authenticationProvider)
 				.build();
 	}
-	
-	@Bean
-	public AuthenticationSuccessHandler successHandler() {
+
+    @Bean
+    AuthenticationSuccessHandler successHandler() {
 		return ((request, response, autentication)->{
-			response.sendRedirect("/certificapp/index");
+			response.sendRedirect("/certificapp/main_menu");
 			//response.sendRedirect("/certificapp/main_menu");
 		});
 
 	}
-	
-	
-	@Bean
-	public SessionRegistry sessionRegistry() {
+
+
+    @Bean
+    SessionRegistry sessionRegistry() {
 		return new SessionRegistryImpl();
-	}	
-	
-	@Bean
-    public PasswordEncoder passwordEncoder() {
+	}
+
+    @Bean
+    PasswordEncoder passwordEncoder() {
         return  new BCryptPasswordEncoder();
     }
+    
 	/*
 	@Bean
 	public UserDetailsService userDetailService(IUserRepository userRepository) {

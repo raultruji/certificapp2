@@ -23,7 +23,7 @@ public class UserDetailModel  implements UserDetails{
 		this.user = user;
 		this.usuario = user.getUsuario();
 		this.password = user.getPassword();
-		this.authority = new SimpleGrantedAuthority(user.getPermiso().toString());
+		this.authority = new SimpleGrantedAuthority(user.getPermiso().name().toString());
 				
 	}
 	
@@ -65,5 +65,7 @@ public class UserDetailModel  implements UserDetails{
 		return false;
 	}
 
-	
+	public String getFullName() {
+		return user.getNombre()+" "+user.getApellido1();
+	}
 }
